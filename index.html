@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Nnadi | Fullstack Developer | React, TypeScript, Node.js, Firebase</title>
+    <meta name="description" content="Joshua Nnadi is a self-motivated Fullstack Developer based in West Africa, specializing in React, TypeScript, Node.js, and Firebase. Explore projects, skills, and achievements.">
+    <meta name="keywords" content="Joshua Nnadi, Fullstack Developer, React, TypeScript, Node.js, Firebase, Nigeria, Web Developer, Software Engineer, Portfolio">
+    <meta name="author" content="Joshua Nnadi">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="Joshua Nnadi | Fullstack Developer">
+    <meta property="og:description" content="Self-motivated Fullstack Developer based in West Africa, specializing in React, TypeScript, Node.js, and Firebase. View projects, skills, and achievements.">
+    <meta property="og:image" content="/me.png">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourdomain.com/">
+    <meta name="twitter:title" content="Joshua Nnadi | Fullstack Developer">
+    <meta name="twitter:description" content="Self-motivated Fullstack Developer based in West Africa, specializing in React, TypeScript, Node.js, and Firebase. View projects, skills, and achievements.">
+    <meta name="twitter:image" content="/me.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#6366f1',
+                            dark: '#8b5cf6'
+                        },
+                        secondary: {
+                            light: '#f43f5e',
+                            dark: '#ec4899'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-reverse': 'float-reverse 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'float-reverse': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            transition: background-color 0.3s ease;
+        }
+        
+        body.dark {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .neobrutal-card {
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+        }
+        
+        .dark .neobrutal-card {
+            border: 2px solid #fff;
+            box-shadow: 4px 4px 0px #fff;
+        }
+        
+        .skill-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dark .project-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3);
+        }
+        
+        .light .project-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-primary-light dark:text-primary-dark">Serenity</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">About</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Skills</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Projects</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Contact</a>
+                    <button id="theme-toggle" class="p-2 rounded-full focus:outline-none">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="p-2 rounded-md focus:outline-none">
+                        <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="theme-toggle-mobile" class="flex items-center text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-moon mr-2 text-gray-700 dark:text-yellow-300"></i>
+                        Toggle Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-16 bg-gradient-to-br from-white via-blue-50 to-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20">
+            <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="order-2 md:order-1 flex flex-col justify-center w-full md:w-auto text-center md:text-left">
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-3 typewriter text-gray-900" id="typewriter-headline">
+                        <span id="typewriter-text"></span>
+                    </h1>
+                    <div class="text-lg sm:text-xl md:text-2xl font-semibold text-primary-light mb-2">
+                        Fullstack Developer <span class="text-gray-400 font-normal">|</span> <span class="text-blue-600">React</span> <span class="text-gray-400">•</span> <span class="text-blue-600">TypeScript</span> <span class="text-gray-400">•</span> <span class="text-blue-600">Node.js</span> <span class="text-gray-400">•</span> <span class="text-blue-600">Firebase</span>
+                    </div>
+                    <div class="text-base sm:text-lg text-gray-600 mb-4 font-medium">Building scalable, user-focused web apps for the modern world.</div>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-gray-700 mb-4 text-sm sm:text-base md:text-lg">
+                        <span>📍 West Africa</span>
+                        <span>🖥️ Remote Ready</span>
+                        <span>⏰ CET ±1</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4 text-gray-700 mb-8 text-sm sm:text-base">
+                        <span>✉️ <a href="mailto:chimdijos8@gmail.com" class="underline hover:text-primary-light">chimdijos8@gmail.com</a></span>
+                        <span>GitHub: <a href="https://github.com/serenity004" target="_blank" class="underline hover:text-primary-light">serenity004</a></span>
+                        <span>X: <a href="https://x.com/nnadi_serenity" target="_blank" class="underline hover:text-primary-light">@nnadi_serenity</a></span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-2 justify-center md:justify-start">
+                        <a href="#skills" class="px-7 py-3 bg-primary-light text-white rounded-full font-semibold shadow-md hover:opacity-90 hover:-translate-y-1 transition-all duration-200">View Skills</a>
+                        <a href="#projects" class="px-7 py-3 border-2 border-primary-light text-primary-light rounded-full font-semibold hover:bg-primary-light/10 hover:-translate-y-1 transition-all duration-200">View Projects</a>
+                        <a href="#contact" class="px-7 py-3 border-2 border-secondary-light text-secondary-light rounded-full font-semibold hover:bg-secondary-light/10 hover:-translate-y-1 transition-all duration-200">Contact Me</a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center items-center w-full md:w-auto mb-8 md:mb-0">
+                    <div class="relative">
+                        <img src="me.png" alt="Joshua Nnadi" class="w-60 h-60 sm:w-[340px] sm:h-[340px] md:w-[420px] md:h-[420px] lg:w-[600px] lg:h-[600px] object-cover rounded-full mt-5 mx-auto" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Who is Serenity?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        I'm <span class="font-semibold">Joshua Nnadi</span>, a passionate full-stack developer focused on creating apps, websites, and experiences that simplify life. I specialize in Web3, SaaS, and community-centered products.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        With a strong background in software engineering, I bridge the gap between user needs and robust, scalable backends.
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        When I'm not coding, you can find me contributing to open source or mentoring aspiring developers in my community.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="neobrutal-card p-6 rounded-lg bg-white dark:bg-slate-900">
+                        <div class="text-4xl text-primary-light dark:text-primary-dark mb-3">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Web Development</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Building responsive, performant web applications with modern tech stacks.</p>
+                    </div>
+                    <div class="neobrutal-card p-6 rounded-lg bg-white dark:bg-slate-900">
+                        <div class="text-4xl text-primary-light dark:text-primary-dark mb-3">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Web3</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Developing decentralized applications and smart contracts on blockchain.</p>
+                    </div>
+                    <div class="neobrutal-card p-6 rounded-lg bg-white dark:bg-slate-900">
+                        <div class="text-4xl text-primary-light dark:text-primary-dark mb-3">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Problem Solving</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">Breaking down complex problems into elegant, simple solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Core Skills</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+                <div>
+                    <h3 class="font-semibold mb-2">Frontend</h3>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">React</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-primary-light h-3 rounded-full skill-bar" style="width: 95%"></div>
+                        </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">TypeScript</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-primary-light h-3 rounded-full skill-bar" style="width: 90%"></div>
+                        </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">TailwindCSS</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-primary-light h-3 rounded-full skill-bar" style="width: 85%"></div>
+                        </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">Next.js</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-primary-light h-3 rounded-full skill-bar" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Backend & Tools</h3>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">Node.js</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-secondary-light h-3 rounded-full skill-bar" style="width: 90%"></div>
+                        </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">Firebase</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-secondary-light h-3 rounded-full skill-bar" style="width: 85%"></div>
+                    </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">Supabase</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-secondary-light h-3 rounded-full skill-bar" style="width: 80%"></div>
+                    </div>
+                    <div class="mb-2 text-gray-700 dark:text-gray-300">PostgreSQL</div>
+                    <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                        <div class="bg-secondary-light h-3 rounded-full skill-bar" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-gray-50 dark:bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Achievements</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+            </div>
+            <ul class="space-y-6 text-lg text-gray-700 dark:text-gray-300">
+                <li>🥇 <strong>1st Place</strong> – Innovate to Impact Hackathon (Nov 2024)<br><span class="text-base">Delivered a civic-tech MVP focused on youth engagement using Web3 auth + Firebase.</span></li>
+                <li>🥇 <strong>1st Place</strong> – Enugu Tech Fest Hackathon (May 2025)<br><span class="text-base">Built a live transport management solution (React + Supabase) in under 48 hours.</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section (Updated) -->
+    <section id="projects" class="py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Projects</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+                    </div>
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-xl font-bold mb-1">🟣 Stello – Inventory & POS SaaS App</h3>
+                    <div class="text-gray-700 dark:text-gray-300 mb-1">Tech: Next.js, Supabase, Tailwind, React Query</div>
+                    <div class="text-gray-700 dark:text-gray-300 mb-1">Multi-role platform for small businesses to manage stock, sales, and access control.</div>
+                    <div class="text-gray-700 dark:text-gray-300">Features: CSV import/export, real-time sales tracking, role-based permissions.</div>
+                        </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-1">🎫 Evena – Event Management Platform</h3>
+                    <div class="text-gray-700 dark:text-gray-300 mb-1">Tech: React, Firebase, Zustand</div>
+                    <div class="text-gray-700 dark:text-gray-300">Event hosting platform with ticketing, chat, media sharing, in-app games, and Q&A.</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-1">📱 Ponte – Portfolio Landing Page Generator</h3>
+                    <div class="text-gray-700 dark:text-gray-300 mb-1">Tech: React, Tailwind, Netlify CMS</div>
+                    <div class="text-gray-700 dark:text-gray-300">Built a no-code tool for creators to generate sleek personal websites.</div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- Education & Languages Section -->
+    <section id="education" class="py-20 bg-gray-50 dark:bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Education & Languages</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-2">Education</h3>
+                    <div class="text-gray-700 dark:text-gray-300">B.Sc. Software Engineering<br>Peaceland University, Enugu (2022 – Present)</div>
+                        </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Languages</h3>
+                    <div class="text-gray-700 dark:text-gray-300">English – Fluent<br>French – Intermediate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">What People Say</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Chinedu Okafor</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Software Engineer, Lagos</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        "Joshua is a rare talent. His attention to detail and deep technical knowledge made our project a huge success. I highly recommend him to any team."
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Aisha Bello</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Product Manager, Abuja</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        "Working with Joshua was a fantastic experience. He communicates clearly, delivers on time, and always goes the extra mile."
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Testimonial" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Emeka Umeh</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Startup Founder, Enugu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        "Joshua's problem-solving skills and professionalism are top-notch. He brought our vision to life and exceeded our expectations."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-primary-light dark:bg-primary-dark mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Let's work together</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-8">
+                        Have a project in mind or want to discuss potential opportunities? Feel free to reach out. I'm always open to interesting collaborations and conversations about tech, design, and Web3.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-xl text-primary-light dark:text-primary-dark mr-4"></i>
+                            <a href="mailto:chimdijos8@gmail.com" class="underline hover:text-primary-light">chimdijos8@gmail.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-xl text-primary-light dark:text-primary-dark mr-4"></i>
+                            <span>Enugu, Nigeria</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Connect with me</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://x.com/nnadi_serenity" target="_blank" rel="noopener" aria-label="X (Twitter)" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center hover:bg-primary-light dark:hover:bg-primary-dark hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://github.com/serenity004" target="_blank" rel="noopener" aria-label="GitHub" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center hover:bg-primary-light dark:hover:bg-primary-dark hover:text-white transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/nnadi-serenity/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center hover:bg-primary-light dark:hover:bg-primary-dark hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-xl">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-primary-light dark:focus:ring-primary-dark"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-primary-light dark:bg-primary-dark text-white rounded-lg font-medium hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-xl font-bold text-primary-light dark:text-primary-dark">Serenity</a>
+                </div>
+                <div class="flex space-x-6 mb-4 md:mb-0">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">About</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Skills</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Projects</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-light dark:hover:text-primary-dark transition">Contact</a>
+                </div>
+                <div class="text-gray-600 dark:text-gray-400 text-sm">
+                    &copy; 2025 Made with <i class="fas fa-heart text-red-500 mx-1"></i> by Serenity
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Check for saved theme preference or use preferred color scheme
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+            document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+            document.getElementById('theme-toggle-mobile').innerHTML = '<i class="fas fa-sun text-yellow-300 mr-2"></i>Light Mode';
+        } else {
+            document.documentElement.classList.remove('dark');
+            document.body.classList.remove('dark');
+            document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+            document.getElementById('theme-toggle-mobile').innerHTML = '<i class="fas fa-moon text-gray-700 mr-2"></i>Dark Mode';
+        }
+        
+        // Theme toggle button
+        themeToggle.addEventListener('click', function() {
+            // Toggle icon
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                this.innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+                document.getElementById('theme-toggle-mobile').innerHTML = '<i class="fas fa-moon text-gray-700 mr-2"></i>Dark Mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                this.innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+                document.getElementById('theme-toggle-mobile').innerHTML = '<i class="fas fa-sun text-yellow-300 mr-2"></i>Light Mode';
+            }
+        });
+        
+        // Mobile theme toggle
+        themeToggleMobile.addEventListener('click', function() {
+            // Toggle icon
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                document.body.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-moon text-gray-700"></i>';
+                this.innerHTML = '<i class="fas fa-moon text-gray-700 mr-2"></i>Dark Mode';
+            } else {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                document.getElementById('theme-toggle').innerHTML = '<i class="fas fa-sun text-yellow-300"></i>';
+                this.innerHTML = '<i class="fas fa-sun text-yellow-300 mr-2"></i>Light Mode';
+            }
+        });
+        
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <style>
+/* Floating glow effect for photo */
+.floating-glow {
+  box-shadow: 0 0 40px 0 #6366f1, 0 0 0 0 #fff;
+  animation: floatPhoto 4s ease-in-out infinite;
+}
+@keyframes floatPhoto {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.animate-glow {
+  box-shadow: 0 0 60px 10px #6366f1, 0 0 0 0 #fff;
+  opacity: 0.3;
+}
+/* Typewriter headline */
+.typewriter {
+  min-height: 3.5rem;
+  letter-spacing: -1px;
+}
+#typewriter-text {
+  border-right: 2px solid #6366f1;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink-caret 0.8s step-end infinite;
+}
+@keyframes blink-caret {
+  0%, 100% { border-color: #6366f1; }
+  50% { border-color: transparent; }
+}
+/* Animated skill bars */
+.skill-bar {
+  width: 0;
+  transition: width 2s cubic-bezier(.4,0,.2,1);
+}
+</style>
+<script>
+// Typewriter effect for headline
+const typewriterStrings = [
+  "Joshua Nnadi",
+  "Fullstack Developer"
+];
+let twIndex = 0, charIndex = 0, isDeleting = false;
+const twElem = document.getElementById('typewriter-text');
+function typeWriter() {
+  if (!twElem) return;
+  const current = typewriterStrings[twIndex];
+  if (isDeleting) {
+    charIndex--;
+    twElem.textContent = current.substring(0, charIndex);
+    if (charIndex === 0) {
+      isDeleting = false;
+      twIndex = (twIndex + 1) % typewriterStrings.length;
+      setTimeout(typeWriter, 600);
+    } else {
+      setTimeout(typeWriter, 40);
+    }
+  } else {
+    charIndex++;
+    twElem.textContent = current.substring(0, charIndex);
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typeWriter, 1200);
+    } else {
+      setTimeout(typeWriter, 80);
+    }
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  typeWriter();
+  // Animate skill bars
+  setTimeout(() => {
+    document.querySelectorAll('.skill-bar').forEach(bar => {
+      bar.style.width = bar.getAttribute('style').match(/width: ([0-9]+%)/)[1];
+    });
+  }, 400);
+        });
+    </script>
+</body>
+</html>
