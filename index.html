@@ -1799,6 +1799,16 @@
     </div>
 
     <script>
+
+        fetch("https://portnotify-p1kc.vercel.app/api/notify", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    timestamp: new Date().toISOString(),
+    url: window.location.href,
+    userAgent: navigator.userAgent
+        })
+    });
         // Enhanced interactive effects
         document.querySelectorAll('.widget-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
